@@ -25,11 +25,27 @@ function getWeatherData(location) {
     const temperature = document.querySelector("#temperature");
     const condition = document.querySelector("#condition");
     const location = document.querySelector("#location");
+    const body = document.querySelector("body"); // Get a reference to the body element
   
-    // updates the website with the temperature and weather data of said city
+    // Update the website with the temperature and weather data of said city
     temperature.textContent = `${weatherData.temperature}°C`;
     condition.textContent = weatherData.condition;
     location.textContent = weatherData.location;
+  
+    // Define a mapping of weather conditions to background colors
+    const conditionToBackgroundColor = {
+      // Add your weather conditions and corresponding background colors here
+      "Clear": "skyblue",
+      "Clouds": "lightgray",
+      "Rain": "lightblue",
+      // Add more conditions and colors as needed
+    };
+  
+    // Set the background color based on the weather condition
+    const backgroundColor = conditionToBackgroundColor[weatherData.condition];
+    if (backgroundColor) {
+      body.style.backgroundColor = backgroundColor;
+    }
   }
   
   // Get references to the search button and search bar
